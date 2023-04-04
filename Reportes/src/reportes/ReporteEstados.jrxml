@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteEstados" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7232b070-92d2-4b4a-9bae-5af35113d9dc">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     estados.`idestado` AS estados_idestado,
+     estados.`nombreEstado` AS estados_nombreEstado,
+     paises.`nombrePais` AS paises_nombrePais
+FROM
+     `paises` paises INNER JOIN `estados` estados ON paises.`idpais` = estados.`idPais`]]>
+	</queryString>
+	<field name="estados_idestado" class="java.lang.Integer"/>
+	<field name="estados_nombreEstado" class="java.lang.String"/>
+	<field name="paises_nombrePais" class="java.lang.String"/>
+	<variable name="paises_nombrePais_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{paises_nombrePais}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="159" y="19" width="261" height="44" uuid="a5c9b5fa-5059-44fa-9c07-bf2da8c405a1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Fira Code" size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de estados]]></text>
+			</staticText>
+			<image>
+				<reportElement x="45" y="0" width="147" height="79" uuid="3904ab28-4458-48c7-b80e-eafba9f29f47"/>
+				<imageExpression><![CDATA["C:\\Users\\francisco.reyes\\Pictures\\download.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="472" y="0" width="100" height="20" uuid="8e49c994-7798-4bb3-888d-62cfd124d76b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="20" uuid="b7fe8717-5f54-402a-bb70-fd204f8ee353"/>
+				<text><![CDATA[estados_idestado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="0" width="158" height="20" uuid="5a3984a7-eb79-4d45-a239-6644bb917b37"/>
+				<text><![CDATA[estados_nombreEstado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="0" width="121" height="20" uuid="0f87f1aa-5e7c-4a2e-8517-f9696e364cb1"/>
+				<text><![CDATA[paises_nombrePais]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="45" height="20" uuid="75d6c941-1d19-43cb-bf2b-fc412c611fcf"/>
+				<textFieldExpression><![CDATA[$F{estados_idestado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="139" height="20" uuid="2bee218c-21cb-4840-bbef-fac5e1e3119f"/>
+				<textFieldExpression><![CDATA[$F{estados_nombreEstado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="313" y="0" width="121" height="20" uuid="408ca46b-67bd-4c70-9269-1055a48e51b4"/>
+				<textFieldExpression><![CDATA[$F{paises_nombrePais}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="216" y="0" width="80" height="20" uuid="d6c2f8d6-1943-4bfd-97dc-a437b413b66b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="296" y="0" width="40" height="20" uuid="fadde3b5-0b21-43a9-b259-8b87ef603e05"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
